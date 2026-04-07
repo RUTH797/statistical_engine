@@ -1,10 +1,11 @@
-Statistical Engineering & Simulation Assessment
+# Statistical Engineering & Simulation Assessment
 
 ## Project Overview
 This project implements a complete pure-Python statistical engine from scratch (no NumPy/pandas) that demonstrates the Law of Large Numbers through Monte Carlo simulation. The statistical engine processes raw 1D numerical data and calculates mean, median, mode (including multimodal handling), variance (both population and sample with Bessel's correction), standard deviation, and outlier detection. The Monte Carlo simulation models a server with a 4.5% daily crash probability and shows how larger sample sizes converge to theoretical probability.
 
 ## Author
 Ruth
+
 ---
 
 ## Mathematical Logic Implemented
@@ -55,21 +56,32 @@ Ruth
 - Default threshold = 2 standard deviations
 - Returns values outside bounds
 
-Setup Instructions
+---
 
-# Prerequisites
+## Setup Instructions
+
+### Prerequisites
 - Python 3.6 or higher
 - No external libraries required (uses only: math, random, json, unittest, collections)
 
-# Clone the Repository
+### Clone the Repository
 ```bash
 git clone https://github.com/RUTH797/statistical_engine.git
 cd statistical_engine
 
-How to Run
-Run the Main Program (Statistical Analysis + Monte Carlo)
+Run the Main Program
 bash
 python main.py
+Testing
+Run Unit Tests
+bash
+python -m unittest tests.test_stat_engine -v
+Tests Included
+test_mean_calculation: Verifies mean on even list [1,2,3,4,5,6] = 3.5
+test_median_odd	: Verifies median on odd list [1,2,3,4,5] = 3
+test_median_even: Verifies median on even list [1,2,3,4,5,6] = 3.5
+test_empty_data: Graceful failure - raises ValueError
+test_standard_deviation	: Matches known mathematical outcome
 
 
 Sample Output
@@ -141,3 +153,54 @@ LAW OF LARGE NUMBERS EXPLANATION
 Small sample (30 days): High error, unreliable for budgeting
 Large sample (10,000 days): Converges to true 4.5% probability
 Theoretical probability ≠ small sample observation!
+✅ Acceptance Criteria Checklist
+
+##Core Statistical Engine
+Passes empty list handling (raises ValueError)
+
+Mixed data type cleaning (converts "3" to 3.0, removes None)
+
+Multimodal mode returns list of all modes
+
+Unique values mode returns descriptive message
+
+Sample variance with Bessel's correction (divides by n-1)
+
+Population variance (divides by N)
+
+Outlier detection with configurable threshold
+
+Even vs Odd median handled correctly
+
+##Unit Testing
+Correct mean on odd vs even list
+
+Correct median on odd vs even list
+
+Graceful failure on empty list
+
+Standard deviation matches known outcome
+
+##Monte Carlo & Law of Large Numbers
+Simulates 4.5% theoretical probability
+
+Runs for 30, 365, 1000, 10000 days
+
+Error decreases as sample size increases
+
+Demonstrates LLN convergence
+
+##Documentation & Submission
+Project Overview included
+
+Mathematical Logic explained
+
+Setup Instructions provided
+
+Testing Instructions included
+
+Acceptance Criteria Checklist present
+
+Public GitHub repository
+
+Proper folder structure (data/, src/, tests/)
